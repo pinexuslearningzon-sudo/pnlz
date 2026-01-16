@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pi Nexus Tuition | Excellence in Learning</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --dark-bg: #0f172a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .custom-navbar {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pi-logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-right: 12px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover .pi-logo {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .brand-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-light) !important;
+            margin: 0 15px;
+            position: relative;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO / CAROUSEL --- */
+        .hero-section {
+            padding: 100px 0 60px;
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent);
+        }
+
+        #piNexusCarousel {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            filter: brightness(0.6);
+        }
+
+        .carousel-caption {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            bottom: 10%;
+            text-align: left;
+            max-width: 500px;
+            left: 5%;
+        }
+
+        .carousel-caption h5 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        /* --- SECTION GENERIC --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- CARDS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .board-logo-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .board-logo {
+            max-height: 80px;
+            width: auto;
+        }
+
+        .btn-custom {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            color: white;
+        }
+
+        /* --- CONTACT FORM --- */
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            padding: 12px 15px;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: none;
+            color: white;
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        /* --- FOOTER --- */
+        .footer-section {
+            background: #070b14;
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <span class="pi-logo">π</span>
+                <div class="brand-text">
+                    Pi Nexus
+                    <span class="tagline">Learning Zone</span>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i data-lucide="menu" style="color: white;"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#contact" class="btn btn-custom btn-sm">Join Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div id="piNexusCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Study Group">
+                        <div class="carousel-caption">
+                            <span class="section-subtitle">Empowering Future</span>
+                            <h5>Welcome to Pi Nexus</h5>
+                            <p class="text-light opacity-75">Join a community of learners dedicated to academic excellence and personal growth.</p>
+                            <button class="btn btn-custom mt-3">Explore Courses</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="Focused Student">
+                        <div class="carousel-caption">
+                            <span class="section-subtitle">Expert Guidance</span>
+                            <h5>Learn From The Best</h5>
+                            <p class="text-light opacity-75">Personalized attention from experienced tutors who care about your results.</p>
+                            <button class="btn btn-custom mt-3">Meet Tutors</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#piNexusCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#piNexusCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 reveal">
+                    <span class="section-subtitle">Our Mission</span>
+                    <h2 class="section-title">Nurturing Minds, <br><span style="color: var(--primary);">Building Futures</span></h2>
+                    <p class="lead text-muted mb-4">At Pi Nexus, we believe every student has a unique learning pace. Our methodology bridges the gap between potential and performance.</p>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 p-2 bg-primary bg-opacity-10 rounded">
+                            <i data-lucide="check-circle" class="text-primary"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1">Personalized Path</h6>
+                            <p class="small text-muted">Curriculums tailored to individual learning styles and goals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3 p-2 bg-primary bg-opacity-10 rounded">
+                            <i data-lucide="users" class="text-primary"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-1">Expert Educators</h6>
+                            <p class="small text-muted">Mentors from top universities with proven track records.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal stagger-2">
+                    <div class="position-relative">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-10 rounded-4 translate-middle-x ms-4 mt-4"></div>
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80" alt="Learning" class="img-fluid rounded-4 shadow-lg position-relative z-1">
+                        <div class="glass-card position-absolute bottom-0 end-0 m-4 z-2 p-3 d-none d-md-block" style="max-width: 200px;">
+                            <div class="d-flex align-items-center">
+                                <span class="h2 mb-0 me-2 text-primary">10+</span>
+                                <span class="small fw-bold">Years of Excellence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOARDS SECTION -->
+    <section class="section-padding bg-black bg-opacity-25" id="courses">
+        <div class="container text-center mb-5 reveal">
+            <span class="section-subtitle">Curriculum</span>
+            <h2 class="section-title">Comprehensive Board Coverage</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">We offer specialized coaching for various educational boards, ensuring students excel in their specific examination patterns.</p>
+        </div>
+        <div class="container">
+            <div class="row g-4">
+                <!-- ICSE -->
+                <div class="col-md-4 reveal stagger-1">
+                    <div class="glass-card text-center">
+                        <div class="board-logo-container">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" class="board-logo" alt="ICSE">
+                        </div>
+                        <h4 class="mb-3">ICSE Board</h4>
+                        <p class="text-muted small mb-4">Focus on extensive internal assessment and analytical development for Class 1-10.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm w-100 rounded-pill">View Schedule</a>
+                    </div>
+                </div>
+                <!-- CBSE -->
+                <div class="col-md-4 reveal stagger-2">
+                    <div class="glass-card text-center">
+                        <div class="board-logo-container">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" class="board-logo" alt="CBSE">
+                        </div>
+                        <h4 class="mb-3">CBSE Board</h4>
+                        <p class="text-muted small mb-4">Standardized national curriculum focusing on science and mathematics fundamentals.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm w-100 rounded-pill">View Schedule</a>
+                    </div>
+                </div>
+                <!-- WB -->
+                <div class="col-md-4 reveal stagger-3">
+                    <div class="glass-card text-center">
+                        <div class="board-logo-container">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3074/3074442.png" class="board-logo" alt="WB">
+                        </div>
+                        <h4 class="mb-3">WB Board</h4>
+                        <p class="text-muted small mb-4">Deep regional insights and strong foundation in language and local humanities.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm w-100 rounded-pill">View Schedule</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="glass-card p-5 reveal">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h2 class="section-title">Get in Touch</h2>
+                        <p class="text-muted mb-5">Have questions? Fill out the form and our counselor will call you back within 24 hours.</p>
+                        
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="me-3 p-3 bg-white bg-opacity-10 rounded-circle">
+                                <i data-lucide="phone" class="text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Call Us</h6>
+                                <span class="text-muted">+91 98765 43210</span>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center">
+                            <div class="me-3 p-3 bg-white bg-opacity-10 rounded-circle">
+                                <i data-lucide="mail" class="text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Email Us</h6>
+                                <span class="text-muted">contact@pinexus.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <form id="contactForm" class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small">Name</label>
+                                <input type="text" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Email</label>
+                                <input type="email" class="form-control" placeholder="john@example.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small">Subject</label>
+                                <select class="form-control">
+                                    <option>General Inquiry</option>
+                                    <option>Course Enrollment</option>
+                                    <option>Parent Counseling</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-custom w-100 py-3 mt-2">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a class="navbar-brand d-flex align-items-center mb-4" href="#">
+                        <span class="pi-logo">π</span>
+                        <div class="brand-text">Pi Nexus</div>
+                    </a>
+                    <p class="text-muted mb-4 pe-lg-5">Building a bridge to excellence through personalized tutoring and modern pedagogical approaches.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="p-2 bg-white bg-opacity-5 rounded-circle text-light"><i data-lucide="facebook" size="18"></i></a>
+                        <a href="#" class="p-2 bg-white bg-opacity-5 rounded-circle text-light"><i data-lucide="instagram" size="18"></i></a>
+                        <a href="#" class="p-2 bg-white bg-opacity-5 rounded-circle text-light"><i data-lucide="twitter" size="18"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-4">Quick Links</h6>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                    <a href="#courses" class="footer-link">Courses</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                <div class="col-lg-2 col-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-4">Support</h6>
+                    <a href="#" class="footer-link">FAQs</a>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms</a>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-4">Newsletter</h6>
+                    <p class="text-muted small mb-4">Subscribe to get study tips and course updates.</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-custom">Join</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-muted mb-0">&copy; 2026 Pi Nexus. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <p class="small text-muted mb-0">Designed for Excellence.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Initial check on load
+        window.addEventListener("DOMContentLoaded", reveal);
+
+        // Navbar scroll effect
+        window.onscroll = function() {
+            var nav = document.querySelector('.custom-navbar');
+            if (window.pageYOffset > 50) {
+                nav.style.padding = "10px 0";
+                nav.style.background = "rgba(15, 23, 42, 0.98)";
+            } else {
+                nav.style.padding = "15px 0";
+                nav.style.background = "rgba(15, 23, 42, 0.9)";
+            }
+        };
+
+        // Form Submission Simulation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerText = 'Message Sent!';
+                btn.classList.replace('btn-custom', 'btn-success');
+                e.target.reset();
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('btn-success', 'btn-custom');
+                    btn.disabled = false;
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
